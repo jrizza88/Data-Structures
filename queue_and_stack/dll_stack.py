@@ -16,3 +16,15 @@ class Stack:
 
     def len(self):
         pass
+
+
+## for stack we add values to the head/top
+## the head/top is considered the start.
+## when we remove we remove from the head/top
+## a LL
+
+## we always remove from an end or the front
+
+## if this was an array adding is O(n)
+
+## linkedlist is O(1)
