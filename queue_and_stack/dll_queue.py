@@ -12,6 +12,15 @@ class Queue:
         # self.storage = ?
 
     def enqueue(self, value):
+        queue_back = DoublyLinkedList(value)
+        self.size += 1
+
+        if not self.size:
+            self.size = queue_back 
+        else:
+            queue_back = self.size
+            
+
 
 
     def dequeue(self):

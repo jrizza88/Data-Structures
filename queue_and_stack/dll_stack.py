@@ -27,8 +27,9 @@ class Stack:
             return None
         else:
             pop_value = self.size
-            # pop_val.delete(pop_value)
-            return pop_value
+            minus_one = pop_value - 1
+            pop_val.delete(minus_one)
+            return minus_one
         #     value.remove_from_head()
             # return value
             # value = self.size
@@ -41,8 +42,8 @@ class Stack:
         # pop_value = self.size.length
         # self.size = self.size.next
         # self.size.
-
-        self.size -= 1
+        return self.size
+        # self.size -= 1
         # return pop_val
         # pop_val = DoublyLinkedList()
         # if pop_val != None:
