@@ -167,8 +167,31 @@ class DoublyLinkedList:
             node.delete()
         
     """Returns the highest value currently in the list"""
-    def get_max(self):
-        pass
+    # def get_max(self):
+    #     ## have node point to the head here
+    #     # current = self.head
+
+    #     if self.head == None:
+    #         return None
+    #     else:
+    #         current = self.head
+    #         max_val = self.head.value
+    #         while current.next != None:
+    #             if current.value > max_val:
+    #                 max_val = current.value
+    #                 current = current.next
+    #     return max_val
+
+    # def get_max(self):
+    #     if self.head == None:
+    #         return None
+    #     max_value = self.head.value
+    #     current_node = self.head
+    #     while current_node.next != None:
+    #         current_node = current_node.next
+    #         if current_node.value > max_value:
+    #             max_value = current_node.value
+    #     return max_value
 
 first_node = ListNode(100)
 linked_list = DoublyLinkedList()
@@ -177,13 +200,17 @@ linked_list.add_to_head(2)
 linked_list.add_to_head(3)
 linked_list.add_to_head(4)
 
-linked_list.print()
-print(linked_list.head)
-print(len(linked_list))
+# linked_list.print()
+# print(linked_list.head)
+# print(len(linked_list))
 
 linked_list.delete(first_node)
 linked_list.remove_from_head()
-linked_list.print()
-print('---------------')
-linked_list.remove_from_tail()
+# linked_list.print()
+# print('---------------')
+# linked_list.remove_from_tail()
+# linked_list.print()
+
+# linked_list.real_get_max()
+print('--------------- max:')
 linked_list.print()

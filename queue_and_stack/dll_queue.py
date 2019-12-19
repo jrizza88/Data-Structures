@@ -21,10 +21,24 @@ class Queue:
             queue_back = self.size
             
 
-
-
     def dequeue(self):
-        pass
+        remove_queue = DoublyLinkedList()
+        if self.size is 0:
+            return 
+        # queue_value = self.size
+        # queue_remove = DoublyLinkedList()
+        else:
+            self.size -= 1
+            return remove_queue.remove_from_tail()
+            
+        # if not self.size:
+        #     self.size = queue_remove
+        # else:
+        #     queue_remove = self.size
+        #     self.size = queue_remove
+     
+        # return queue_remove
+
 
     def len(self):
         return self.size
