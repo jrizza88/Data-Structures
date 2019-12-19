@@ -22,13 +22,16 @@ class Stack:
 
     def pop(self):
         pop_val = DoublyLinkedList()
-        
-        # pop_val.delete(self.size)
 
-        if pop_val is not None:
-            self.size -= 1
-        else:
+        if self.size is 0:
             return None
+        else:
+            value = self.size
+            pop_val.delete(self.size)
+            return value
+            # self.size -= 1
+            # self.size = pop_val
+            
         # return pop_val
         # pop_val = DoublyLinkedList()
         # if pop_val != None:
