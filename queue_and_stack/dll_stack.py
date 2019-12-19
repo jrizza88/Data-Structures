@@ -22,16 +22,27 @@ class Stack:
 
     def pop(self):
         pop_val = DoublyLinkedList()
-
+       
         if self.size is 0:
             return None
         else:
-            value = self.size
-            pop_val.delete(self.size)
-            return value
+            pop_value = self.size
+            # pop_val.delete(pop_value)
+            return pop_value
+        #     value.remove_from_head()
+            # return value
+            # value = self.size
+            # minus_one = value - 1
+            # print(minus_one)
+            # pop_val.delete(minus_one)
+            # return minus_one
             # self.size -= 1
             # self.size = pop_val
-            
+        # pop_value = self.size.length
+        # self.size = self.size.next
+        # self.size.
+
+        self.size -= 1
         # return pop_val
         # pop_val = DoublyLinkedList()
         # if pop_val != None:
@@ -42,7 +53,8 @@ class Stack:
         # return len(Stack)
         return self.size
 
-
+stack_list = Stack()
+print(stack_list.pop())
 ## for stack we add values to the head/top
 ## the head/top is considered the start.
 ## when we remove we remove from the head/top
