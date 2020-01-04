@@ -27,7 +27,7 @@ class LRUCache:
     def get(self, key):
         # returns None if there is no Value
         value = None
-        if key in self.cache:
+        if key in self.cache is not None:
             node = self.cache[key]
             value = node.value[1]
             self.storage.move_to_front(node)
@@ -47,23 +47,28 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        if key in self.cache:
+        if key in self.cache is not None:
             # update with the new key
             node = self.cache[key]
             ## move the key to the front of the array
             self.storage.move_to_front(node)
             # maybe should be node.value instead of self.cache[key]
             # 
-            node.value = [key, value]
+            
+            node.value  = [key, value]
 
             return
         # if the current num of nodes reached the limit remove the least used one
         if self.cur_num_nodes == self.max_num_nodes:
-
+            # delete the key
+            self.cache.pop(self.storage.tail.value[0])
             # removes the value at the end of the array
             self.storage.remove_from_tail()
+            self.cur_num_nodes -= 1
 
         #Adds the given key-value pair to the cache
         self.storage.add_to_head([key, value])
-lru_list = LRUCache
-print(lru_list)
+        self.cache[key] = self.storage.head
+        self.cur_num_nodes += 1
+# lru_list = LRUCache
+# print(lru_list)
