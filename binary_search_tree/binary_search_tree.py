@@ -14,20 +14,45 @@ class BinarySearchTree:
     def insert(self, value):
         # create a new node that contains the element.
         node = BinarySearchTree(value)
-        # if self.value is None, set self.value to be the node
-        if self.value is None:
-            self.value = node
-        # if the value entered is less than the root value, add value to the left of the node
-        else:
-            if 
+        # if the root value is null set the root to the node
+        # if self.value is None:
+        #     self.value = node
+        #     print('self.value', self.value)
+        #     print('value', value)
+        #     print('node', node)
+        #     return node
+
+
+        if value < self.value:
+        # if the new node value is less than the root node, insert left
+            # if value is to the left, insert left
+            print('traversing the value to the left (parent)', value)
+            if self.left is None:
+                print('value in self.left...', value)
+                self.left = node
+            else:
+                self.left.insert(value)
+                # print('value in self.left... ELSE', self.left.insert(value))
+                self.left.value = None
+            # else insert right
+        elif value >= self.value:
+            print('traversing the value to the right (parent)', value)
+            if self.right is None:
+                print('value of right self.right', value)  
+                self.right = node
+            else:
+                self.right.insert(value)
+                # print('value in self.right... ELSE', self.right.insert(value))
+                self.right.value = None
+            # else or elif if additional nodes are smaller, continue on to left.
 
         # continue down the tree and ensure that other values go to the left of this side of the tree
         
         # if there value 
         # elif the node is less than the root value, set left
         
-        # return the result of value
         return value
+        
 
     # Return True if the tree contains the value
     # False if it does not
@@ -78,8 +103,8 @@ class BinarySearchTree:
 
 
 
-binary_search = BinarySearchTree
-print(binary_search.insert(2))
-print(binary_search.insert(3))
-print(binary_search.insert(8))
-print(binary_search.insert(5))
+# binary_search = BinarySearchTree(5)
+# print(binary_search.insert(2))
+# print(binary_search.insert(3))
+# print(binary_search.insert(8))
+# print(binary_search.insert(5))
