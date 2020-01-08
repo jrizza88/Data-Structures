@@ -29,7 +29,9 @@ class LRUCache:
         value = None
         if key in self.cache is not None:
             node = self.cache[key]
+            # make sure the node equals the value not the key
             value = node.value[1]
+            # move to the front of the node of the storage. 
             self.storage.move_to_front(node)
 
         return value
@@ -54,8 +56,7 @@ class LRUCache:
             self.storage.move_to_front(node)
             # maybe should be node.value instead of self.cache[key]
             # 
-            
-            node.value  = [key, value]
+            node.value = [key, value]
 
             return
         # if the current num of nodes reached the limit remove the least used one
@@ -64,11 +65,14 @@ class LRUCache:
             self.cache.pop(self.storage.tail.value[0])
             # removes the value at the end of the array
             self.storage.remove_from_tail()
+            # subtracts the current number of nodes 
             self.cur_num_nodes -= 1
 
         #Adds the given key-value pair to the cache
         self.storage.add_to_head([key, value])
+        ## sets the storage of the cache key to equal the self storage head
         self.cache[key] = self.storage.head
+        # continue counting up the nodes
         self.cur_num_nodes += 1
 # lru_list = LRUCache
 # print(lru_list)
