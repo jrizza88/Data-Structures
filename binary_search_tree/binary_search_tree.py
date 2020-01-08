@@ -21,19 +21,21 @@ class BinarySearchTree:
         #     print('value', value)
         #     print('node', node)
         #     return node
-
-
         if value < self.value:
         # if the new node value is less than the root node, insert left
             # if value is to the left, insert left
             print('traversing the value to the left (parent)', value)
             if self.left is None:
                 print('value in self.left...', value)
+                # sets the node for the value
                 self.left = node
             else:
+                # inserts values to the left of the parent node (not necessarily root node)
+                # this is the final step in the insertion for the value being passed
                 self.left.insert(value)
+                
                 # print('value in self.left... ELSE', self.left.insert(value))
-                self.left.value = None
+                # self.left.value = None
             # else insert right
         elif value >= self.value:
             print('traversing the value to the right (parent)', value)
@@ -43,24 +45,39 @@ class BinarySearchTree:
             else:
                 self.right.insert(value)
                 # print('value in self.right... ELSE', self.right.insert(value))
-                self.right.value = None
-            # else or elif if additional nodes are smaller, continue on to left.
-
-        # continue down the tree and ensure that other values go to the left of this side of the tree
-        
-        # if there value 
-        # elif the node is less than the root value, set left
-        
+                # self.right.value = None
+     # possibly can be removed   
         return value
         
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        print('target', target)
+        
         if self.value == target:
+            print('self.value', self.value)
+            print('target printed', target)
+            #returns true if the root node (self.value) is equal to the target. 
             return True
         # elif self.left == target:
-       
+        if target < self.value:
+            if self.left is None:
+                return False
+        #    print('if less than the node target', self.left.contains(target))
+            # print('CONTAINS IF LESS', target)
+            print('CONTAINs self.value LESS', self.left.contains(target))
+            node = self.left.contains(target)
+            return node
+        elif target > self.value:
+            if self.right is None:
+                print('value is not in the binary search tree!', self.value)
+                return False
+            # print('CONTAINS GREATER self.value', self.value.contains(target))
+            print('CONTAINS IF GREATER', target)
+            print('CONTAINs self.value MORE', self.right.contains(target))
+            node = self.right.contains(target)
+            return node
         else:
             return False
 
@@ -103,8 +120,11 @@ class BinarySearchTree:
 
 
 
-# binary_search = BinarySearchTree(5)
-# print(binary_search.insert(2))
-# print(binary_search.insert(3))
-# print(binary_search.insert(8))
-# print(binary_search.insert(5))
+binary_search = BinarySearchTree(5)
+print(binary_search.insert(2))
+print(binary_search.insert(3))
+print(binary_search.insert(7))
+print(binary_search.insert(8))
+print(binary_search.contains(3))
+print(binary_search.contains(4))
+print(binary_search.contains(5))
