@@ -91,8 +91,20 @@ class BinarySearchTree:
             max_value = self.value
             print('max value as self.value', max_value)
             return self.value
-        else:
-            return 2
+        while self.right is not None:
+            # if self.value > max_value:
+            # if self.right is None:
+            #     return self.right.value
+            print('max_value...', max_value)
+            print('self.value', self.value)
+            print('self.right.value!', self.right.value)
+            max_value = self.right.value
+            print('self.right.value::', self.right.value)
+            print('max_value in while loop', max_value)
+            print('get max recursion', self.right.get_max())
+            return self.right.get_max()
+            
+           
         # traverse right side of tree until null is found. 
         # this mean last value found on the right side of tree is max value
         return max_value
