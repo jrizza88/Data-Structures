@@ -63,6 +63,7 @@ class BinarySearchTree:
         # elif self.left == target:
         if target < self.value:
             if self.left is None:
+                print('value is not in the binary search tree! LEFT SIDE', target)
                 return False
         #    print('if less than the node target', self.left.contains(target))
             # print('CONTAINS IF LESS', target)
@@ -71,7 +72,7 @@ class BinarySearchTree:
             return node
         elif target > self.value:
             if self.right is None:
-                print('value is not in the binary search tree!', self.value)
+                print('value is not in the binary search tree! RIGHT SIDE', target)
                 return False
             # print('CONTAINS GREATER self.value', self.value.contains(target))
             print('CONTAINS IF GREATER', target)
@@ -83,7 +84,19 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        max_value = 0
+        # EDGE CASE:
+        # if there is no values in self.right, print the root node
+        if self.right is None:
+            max_value = self.value
+            print('max value as self.value', max_value)
+            return self.value
+        else:
+            return 2
+        # traverse right side of tree until null is found. 
+        # this mean last value found on the right side of tree is max value
+        return max_value
+
 
     # Call the function `cb` (callback..) on the value of each node
     # You may use a recursive or iterative approach
@@ -121,10 +134,16 @@ class BinarySearchTree:
 
 
 binary_search = BinarySearchTree(5)
-print(binary_search.insert(2))
+# print(binary_search.insert(2))
+# print(binary_search.insert(3))
+# print(binary_search.insert(7))
+# print(binary_search.insert(8))
+# print(binary_search.contains(3))
+# print(binary_search.contains(4))
+# print(binary_search.contains(5))
+print(binary_search.get_max(), 5)
+print(binary_search.insert(30))
+print(binary_search.get_max(), 30)
+print(binary_search.insert(300))
 print(binary_search.insert(3))
-print(binary_search.insert(7))
-print(binary_search.insert(8))
-print(binary_search.contains(3))
-print(binary_search.contains(4))
-print(binary_search.contains(5))
+print(binary_search.get_max(), 300)
