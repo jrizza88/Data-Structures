@@ -17,17 +17,16 @@ class BinarySearchTree:
         # if the root value is null set the root to the node
         # if self.value is None:
         #     self.value = node
-        #     print('self.value', self.value)
-        #     print('value', value)
-        #     print('node', node)
         #     return node
         if value < self.value:
         # if the new node value is less than the root node, insert left
             # if value is to the left, insert left
             print('traversing the value to the left (parent)', value)
+        # if there is no self.lef value
             if self.left is None:
+            # or could have wrote if not self.left
                 print('value in self.left...', value)
-                # sets the node for the value
+                # sets the new left child to be the new value
                 self.left = node
             else:
                 # inserts values to the left of the parent node (not necessarily root node)
@@ -37,10 +36,10 @@ class BinarySearchTree:
                 # print('value in self.left... ELSE', self.left.insert(value))
                 # self.left.value = None
             # else insert right
-        elif value >= self.value:
-            print('traversing the value to the right (parent)', value)
+        else:
+            # print('traversing the value to the right (parent)', value)
             if self.right is None:
-                print('value of right self.right', value)  
+                # print('value of right self.right', value)  
                 self.right = node
             else:
                 self.right.insert(value)
@@ -62,7 +61,7 @@ class BinarySearchTree:
             return True
         # elif self.left == target:
         if target < self.value:
-            if self.left is None:
+            if self.left is None: # could also be "if not self.left"
                 print('value is not in the binary search tree! LEFT SIDE', target)
                 return False
         #    print('if less than the node target', self.left.contains(target))
@@ -86,34 +85,37 @@ class BinarySearchTree:
     def get_max(self):
         max_value = 0
         # EDGE CASE:
-        # if there is no values in self.right, print the root node
+        # if there are no values in self.right, print the root node
         if self.right is None:
             max_value = self.value
             print('max value as self.value', max_value)
             return self.value
         while self.right is not None:
-            # if self.value > max_value:
-            # if self.right is None:
-            #     return self.right.value
-            print('max_value...', max_value)
-            print('self.value', self.value)
-            print('self.right.value!', self.right.value)
+            # print('max_value...', max_value)
+            # print('self.value', self.value)
             max_value = self.right.value
-            print('self.right.value::', self.right.value)
             print('max_value in while loop', max_value)
             print('get max recursion', self.right.get_max())
             return self.right.get_max()
-            
+    def get_max2(self):
+        if not self.right:
+            return self.value
+        while self.right is not None:
+            return self.right.get_max2()           
            
         # traverse right side of tree until null is found. 
         # this mean last value found on the right side of tree is max value
-        return max_value
+        # return max_value
 
 
     # Call the function `cb` (callback..) on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
@@ -146,16 +148,23 @@ class BinarySearchTree:
 
 
 binary_search = BinarySearchTree(5)
-# print(binary_search.insert(2))
-# print(binary_search.insert(3))
-# print(binary_search.insert(7))
-# print(binary_search.insert(8))
-# print(binary_search.contains(3))
-# print(binary_search.contains(4))
-# print(binary_search.contains(5))
+print(binary_search.insert(2))
+print(binary_search.insert(3))
+print(binary_search.insert(7))
+print(binary_search.insert(8))
+print(binary_search.contains(3))
+print(binary_search.contains(4))
+print(binary_search.contains(5))
 print(binary_search.get_max(), 5)
 print(binary_search.insert(30))
 print(binary_search.get_max(), 30)
 print(binary_search.insert(300))
 print(binary_search.insert(3))
 print(binary_search.get_max(), 300)
+
+print(binary_search.get_max2(), 5)
+print(binary_search.insert(31))
+print(binary_search.get_max2(), 31)
+print(binary_search.insert(301))
+print(binary_search.insert(31))
+print(binary_search.get_max2(), 301)
