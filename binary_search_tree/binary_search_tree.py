@@ -21,11 +21,11 @@ class BinarySearchTree:
         if value < self.value:
         # if the new node value is less than the root node, insert left
             # if value is to the left, insert left
-            print('traversing the value to the left (parent)', value)
-        # if there is no self.lef value
+            # print('traversing the value to the left (parent)', value)
+        # if there is no self.left value
             if self.left is None:
-            # or could have wrote if not self.left
-                print('value in self.left...', value)
+            # # or could have wrote if not self.left
+            #     print('value in self.left...', value)
                 # sets the new left child to be the new value
                 self.left = node
             else:
@@ -52,30 +52,30 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        print('target', target)
+        # print('target', target)
         
         if self.value == target:
-            print('self.value', self.value)
-            print('target printed', target)
+            # print('self.value', self.value)
+            # print('target printed', target)
             #returns true if the root node (self.value) is equal to the target. 
             return True
         # elif self.left == target:
         if target < self.value:
             if self.left is None: # could also be "if not self.left"
-                print('value is not in the binary search tree! LEFT SIDE', target)
+                # print('value is not in the binary search tree! LEFT SIDE', target)
                 return False
         #    print('if less than the node target', self.left.contains(target))
             # print('CONTAINS IF LESS', target)
-            print('CONTAINs self.value LESS', self.left.contains(target))
+            # print('CONTAINs self.value LESS', self.left.contains(target))
             node = self.left.contains(target)
             return node
         elif target > self.value:
             if self.right is None:
-                print('value is not in the binary search tree! RIGHT SIDE', target)
+                # print('value is not in the binary search tree! RIGHT SIDE', target)
                 return False
             # print('CONTAINS GREATER self.value', self.value.contains(target))
-            print('CONTAINS IF GREATER', target)
-            print('CONTAINs self.value MORE', self.right.contains(target))
+            # print('CONTAINS IF GREATER', target)
+            # print('CONTAINs self.value MORE', self.right.contains(target))
             node = self.right.contains(target)
             return node
         else:
@@ -88,14 +88,14 @@ class BinarySearchTree:
         # if there are no values in self.right, print the root node
         if self.right is None:
             max_value = self.value
-            print('max value as self.value', max_value)
+            # print('max value as self.value', max_value)
             return self.value
         while self.right is not None:
             # print('max_value...', max_value)
             # print('self.value', self.value)
             max_value = self.right.value
             print('max_value in while loop', max_value)
-            print('get max recursion', self.right.get_max())
+            # print('get max recursion', self.right.get_max())
             return self.right.get_max()
     def get_max2(self):
         if not self.right:
@@ -106,7 +106,11 @@ class BinarySearchTree:
         # traverse right side of tree until null is found. 
         # this mean last value found on the right side of tree is max value
         # return max_value
-
+    # def get_max2(self):
+    #     while self.right is not None:
+    #         return self.right.get_max2()
+    #     else:
+    #         return self.value
 
     # Call the function `cb` (callback..) on the value of each node
     # You may use a recursive or iterative approach
@@ -122,8 +126,43 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node:
+            # print(node.in_order_print(node.left))
+            print(self.value)
+            # print('node', node)
+            return
+    
+        # print(self.left.in_order_print(node.left))
+        # self.left.in_order_print(node.left)
+        # print(node.value)
+        # self.right.in_order_print(node.right)
+        print(self.value)
+        return self.value
 
+        # if node is not None:
+        #     print(self.value)
+        #     # print('node', node)
+        #     return
+        # print the current node
+        # print('printing node(self.value): ', node(self.value))
+        # node(self.value, node)
+        # if self.value:
+        ## will go all the way to the left, then bubble back up then go to the right
+            # go left if you can 
+            # print(self.left.in_order_print(node))
+        # print(self.left.in_order_print(node))
+        # if self.left:
+        #     self.left.in_order_print(node.right)
+        #     print('self.left', self.left)
+        #     print(node.value)
+        # if self.right:
+        #     self.right.in_order_print(node.left)
+        #     print(node.value)
+        # return self.value
+        # if self.right:
+            # go right if you can
+            # self.right.in_order_print(node)
+        ## they do not get executed at the same time!
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
@@ -132,6 +171,18 @@ class BinarySearchTree:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
+        # create a stack to keep track of nodes
+        # place the first node onto stack
+
+        # while stack is not empty:
+            #pop the top node
+            #print he node
+            #add children to the stack 
+            # remember which children to add first
+            # because that changes the output order
+
+
+
         pass
 
     # STRETCH Goals -------------------------
@@ -147,24 +198,24 @@ class BinarySearchTree:
 
 
 
-binary_search = BinarySearchTree(5)
-print(binary_search.insert(2))
-print(binary_search.insert(3))
-print(binary_search.insert(7))
-print(binary_search.insert(8))
-print(binary_search.contains(3))
-print(binary_search.contains(4))
-print(binary_search.contains(5))
-print(binary_search.get_max(), 5)
-print(binary_search.insert(30))
-print(binary_search.get_max(), 30)
-print(binary_search.insert(300))
-print(binary_search.insert(3))
-print(binary_search.get_max(), 300)
+# binary_search = BinarySearchTree(5)
+# print(binary_search.insert(2))
+# print(binary_search.insert(3))
+# print(binary_search.insert(7))
+# print(binary_search.insert(8))
+# print(binary_search.contains(3))
+# print(binary_search.contains(4))
+# print(binary_search.contains(5))
+# print(binary_search.get_max(), 5)
+# print(binary_search.insert(30))
+# print(binary_search.get_max(), 30)
+# print(binary_search.insert(300))
+# print(binary_search.insert(3))
+# print(binary_search.get_max(), 300)
 
-print(binary_search.get_max2(), 5)
-print(binary_search.insert(31))
-print(binary_search.get_max2(), 31)
-print(binary_search.insert(301))
-print(binary_search.insert(31))
-print(binary_search.get_max2(), 301)
+# print(binary_search.get_max2(), 5)
+# print(binary_search.insert(31))
+# print(binary_search.get_max2(), 31)
+# print(binary_search.insert(301))
+# print(binary_search.insert(31))
+# print(binary_search.get_max2(), 301)
