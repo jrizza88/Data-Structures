@@ -146,3 +146,18 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
     def get_max(self):
         pass
+
+dll = DoublyLinkedList()
+
+dll.add_to_head(5)
+dll.add_to_head(7)
+dll.add_to_head(3)
+print(dll)
+dll.remove_from_head()
+print(dll)
+dll.remove_from_head()
+print(dll)
+dll.remove_from_head()
+print(dll)
+dll.remove_from_head()
+print(dll)
